@@ -7,7 +7,7 @@ var can_move: bool = true
 var start_position: Vector2 = Vector2.ZERO
 var target_position: Vector2 = Vector2.ZERO
 var move_step: float = 0.0
-var move_step_factor: float = 2
+var move_step_factor: float = 5 # 1/move_step_factor=time_needed_for_movement_in_seconds
 var is_moving: bool = false
 
 func _init():
@@ -37,7 +37,7 @@ func _move_process(delta: float) -> void:
 		return
 
 	move_step = clampf(move_step + (delta * move_step_factor), 0.0, 1.0)
-	var move_step_interpolated: float = Interpolation.smooth_step2(move_step)
+	var move_step_interpolated: float = _custom_interpolated_move(move_step)
 
 	position = start_position + ((target_position - start_position) * move_step_interpolated)
 	if move_step == 1.0:
@@ -45,14 +45,20 @@ func _move_process(delta: float) -> void:
 		is_moving = false
 		move_step = 0
 
-func _input(event: InputEvent) -> void:
-	if event.is_action("move_left"):
+func _custom_interpolated_move(step: float) -> float:
+	return Interpolation.mix(
+		Interpolation.smooth_start(step),
+		Interpolation.smooth_stop4(step),
+		step)
+
+func _process(_delta: float) -> void:
+	if Input.is_action_pressed("move_left"):
 		_move(Direction.LEFT)
-	if event.is_action("move_right"):
+	if Input.is_action_pressed("move_right"):
 		_move(Direction.RIGHT)
-	if event.is_action("move_up"):
+	if Input.is_action_pressed("move_up"):
 		_move(Direction.UP)
-	if event.is_action("move_down"):
+	if Input.is_action_pressed("move_down"):
 		_move(Direction.DOWN)
 
 func _physics_process(delta: float) -> void:

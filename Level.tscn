@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://swn813u45cdy"]
+[gd_scene load_steps=5 format=3 uid="uid://swn813u45cdy"]
 
+[ext_resource type="PackedScene" uid="uid://chxjishhtufkk" path="res://FollowCamera.tscn" id="1_jeqrp"]
 [ext_resource type="PackedScene" uid="uid://dthlx7wx7w8ln" path="res://Unit.tscn" id="1_og21r"]
 [ext_resource type="TileSet" uid="uid://cx8hg5hiubr8k" path="res://Level.tres" id="1_xlh73"]
+[ext_resource type="PackedScene" uid="uid://b2jp0p3khqm2v" path="res://CameraFollowPoint.tscn" id="4_thg56"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Level" type="Node2D"]
+
+[node name="FollowCamera" parent="." instance=ExtResource("1_jeqrp")]
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
@@ -18,3 +22,10 @@ layer_1/tile_data = PackedInt32Array(917504, 1245184, 2, 851968, 0, 0, 786432, 0
 
 [node name="Unit" parent="." instance=ExtResource("1_og21r")]
 position = Vector2(96, 96)
+
+[node name="CameraFollowPoint" parent="." instance=ExtResource("4_thg56")]
+position = Vector2(515, 683)
+weight = 0.2
+
+[node name="CameraFollowPoint2" parent="." instance=ExtResource("4_thg56")]
+position = Vector2(989, 180)

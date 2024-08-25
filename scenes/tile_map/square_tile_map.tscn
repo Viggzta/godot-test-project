@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dup2f3act2wwk"]
+
+[ext_resource type="Script" path="res://scenes/tile_map/square_tile_map.gd" id="1_kp6bx"]
+
+[node name="SquareTileMap" type="Node2D"]
+script = ExtResource("1_kp6bx")

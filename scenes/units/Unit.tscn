@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://dthlx7wx7w8ln"]
+
+[ext_resource type="Script" path="res://scenes/units/Unit.gd" id="1_1qy1j"]
+[ext_resource type="Texture2D" uid="uid://bmso6vmjal5st" path="res://art/monochrome.png" id="2_au7ig"]
+[ext_resource type="PackedScene" uid="uid://b2jp0p3khqm2v" path="res://scenes/camera/camera_follow_point.tscn" id="3_rmkjo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qujra"]
+atlas = ExtResource("2_au7ig")
+region = Rect2(425, 0, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yuaro"]
+size = Vector2(64, 64)
+
+[node name="Unit" type="CharacterBody2D"]
+script = ExtResource("1_1qy1j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_qujra")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yuaro")
+
+[node name="CameraFollowPoint" parent="." instance=ExtResource("3_rmkjo")]
+
+[connection signal="move_step_completed" from="." to="." method="_on_move_step_completed"]

@@ -1,0 +1,21 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://chhsnrd6syrlj"]
+
+[ext_resource type="StyleBox" uid="uid://dd8ot1rbw6q2k" path="res://themes/button_styles/button_disabled_style_box_texture.tres" id="1_t8ofn"]
+[ext_resource type="StyleBox" uid="uid://csnsoq0gcqrlc" path="res://themes/button_styles/button_hover_style_box_texture.tres" id="1_wc5h1"]
+[ext_resource type="StyleBox" uid="uid://ctckkyok1bdd7" path="res://themes/button_styles/button_default_style_box_texture.tres" id="2_qkaxn"]
+[ext_resource type="StyleBox" uid="uid://cifjnwlsobrk6" path="res://themes/button_styles/button_pressed_style_box_texture.tres" id="3_m4wua"]
+[ext_resource type="FontFile" uid="uid://bgns2hgxdl76w" path="res://fonts/Libre_Baskerville/LibreBaskerville-Regular.ttf" id="4_nw8sc"]
+[ext_resource type="StyleBox" uid="uid://bffexqbmj1dlh" path="res://themes/label_styles/label_style_box_texture.tres" id="5_jq73f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rgbdr"]
+
+[resource]
+default_font = ExtResource("4_nw8sc")
+default_font_size = 22
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/styles/disabled = ExtResource("1_t8ofn")
+Button/styles/focus = SubResource("StyleBoxEmpty_rgbdr")
+Button/styles/hover = ExtResource("1_wc5h1")
+Button/styles/normal = ExtResource("2_qkaxn")
+Button/styles/pressed = ExtResource("3_m4wua")
+Label/styles/normal = ExtResource("5_jq73f")

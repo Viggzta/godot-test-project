@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdgkom751wfgl"]
+
+[ext_resource type="Script" path="res://spells/targeting/target_types/no_target/no_target_action.gd" id="1_jvc1r"]
+
+[node name="NoTargetAction" type="Node2D"]
+script = ExtResource("1_jvc1r")

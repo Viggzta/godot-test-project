@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://bu55dt3ty7aue"]
+
+[ext_resource type="Texture2D" uid="uid://c81t134ycj5bh" path="res://art/ui/actionbar_left.png" id="1_bse07"]
+[ext_resource type="Script" path="res://scenes/ui/spell_icons/action_bar.gd" id="1_fvqte"]
+[ext_resource type="Theme" uid="uid://dipkwtrhw3apn" path="res://themes/action_button_theme.tres" id="2_bttdu"]
+[ext_resource type="Texture2D" uid="uid://qr5c6pr55ybn" path="res://art/ui/actionbar_right.png" id="2_vfdv3"]
+
+[node name="ActionBar" type="Control"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_fvqte")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_left = -68.0
+offset_top = -64.0
+offset_right = 68.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="LeftBookStop" type="TextureRect" parent="HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("1_bse07")
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_bttdu")
+
+[node name="ActionButtonContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="RightBookStop" type="TextureRect" parent="HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_vfdv3")

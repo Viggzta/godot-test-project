@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckf5cpu3ty7q5"]
+
+[ext_resource type="Script" path="res://spells/fire_bolt/fire_bolt_spell_effect.gd" id="1_kgrs2"]
+
+[node name="FireBoltSpellEffect" type="Node2D"]
+script = ExtResource("1_kgrs2")

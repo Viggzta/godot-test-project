@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://cb542bey6islm"]
+
+[ext_resource type="Texture2D" uid="uid://cfwk84kb3jj" path="res://art/spell_icons/arcane_missiles.png" id="1_m8gwq"]
+[ext_resource type="Script" path="res://scenes/ui/spell_icons/action_button.gd" id="1_u8116"]
+[ext_resource type="Theme" uid="uid://dipkwtrhw3apn" path="res://themes/action_button_theme.tres" id="2_le0fj"]
+
+[node name="ActionButton" type="Control"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u8116")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("1_m8gwq")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="MarginContainer"]
+layout_mode = 2
+theme = ExtResource("2_le0fj")

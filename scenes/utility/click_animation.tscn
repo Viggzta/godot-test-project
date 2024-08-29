@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://en3nsp7dgfwa"]
+
+[ext_resource type="Script" path="res://scenes/utility/click_animation.gd" id="2_hpdck"]
+[ext_resource type="SpriteFrames" uid="uid://d2ac68o3154c4" path="res://art/interact/click_sprite_frames.tres" id="2_ngs66"]
+
+[node name="click_animation" type="Node2D"]
+modulate = Color(0, 0.615686, 0.027451, 1)
+top_level = true
+texture_filter = 1
+script = ExtResource("2_hpdck")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("2_ngs66")
+animation = &"new_animation"
+frame = 7
+frame_progress = 1.0
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

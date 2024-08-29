@@ -5,12 +5,25 @@ class_name SquareTileMap extends Node2D
 const TILE_NOT_FOUND: Vector2i = Vector2i(-1, -1)
 const INFINITY: float = 9999999.9
 
+var _occupied_map: Dictionary = {}
+
+func set_occupied(target: Vector2i, is_occupied: bool) -> void:
+	if is_occupied:
+		_occupied_map[target] = null
+	else:
+		_occupied_map.erase(target)
+
 func can_move(target: Vector2i) -> bool:
+	if _occupied_map.has(target):
+		return false
 	var found_tile: Vector2i = walkable_layer.get_cell_atlas_coords(target)
 	return found_tile != TILE_NOT_FOUND
 
 func get_node_from_global(global_pos: Vector2) -> Vector2i:
 	return walkable_layer.local_to_map(to_local(global_pos))
+
+func get_global_center_from_node(tile_pos: Vector2i) -> Vector2:
+	return to_global(walkable_layer.map_to_local(tile_pos))
 	
 func _reconstruct_path(came_from: Dictionary, current: Vector2i) -> Array[Vector2i]:
 	var total_path: Array[Vector2i] = [ current ]
@@ -42,7 +55,7 @@ func get_tile_path(from: Vector2i, to: Vector2i) -> Array[Vector2i]:
 				came_from[neighbor] = current
 				g_score[neighbor] = tentative_g_score
 				f_score[neighbor] = tentative_g_score + _heuristic(neighbor, to)
-				if !open_set.has(neighbor):
+				if !open_set.has(neighbor) && !_occupied_map.has(neighbor): # Don't add occupied tiles
 					open_set.append(neighbor)
 	
 	return [] # No path found, sad.

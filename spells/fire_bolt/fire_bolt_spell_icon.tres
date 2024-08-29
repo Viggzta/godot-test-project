@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SpellIcon" load_steps=3 format=3 uid="uid://mkropfuus3ng"]
+
+[ext_resource type="Script" path="res://spells/spell_icon.gd" id="1_ykwx6"]
+[ext_resource type="Texture2D" uid="uid://cavgn0xoubhnv" path="res://spells/fire_bolt/fire_bolt_icon.png" id="2_sykof"]
+
+[resource]
+script = ExtResource("1_ykwx6")
+name = "Fire bolt"
+spell_icon = ExtResource("2_sykof")
+is_passive = false

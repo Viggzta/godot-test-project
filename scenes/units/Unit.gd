@@ -1,7 +1,10 @@
 class_name Unit extends Node2D
 
 signal move_step_completed()
+signal spell_added(spell: Spell)
+signal spell_removed(spell: Spell)
 
+const FIRE_BOLT_SPELL = preload("res://spells/fire_bolt/fire_bolt_spell.tscn")
 const Direction = preload("res://scripts/enums.gd").Direction
 
 var speed: float = 32.0
@@ -11,8 +14,19 @@ var target_position: Vector2 = Vector2.ZERO
 var move_step: float = 0.0
 var move_step_factor: float = 5 # 1/move_step_factor=time_needed_for_movement_in_seconds
 var is_moving: bool = false
-var tile_map_position: Vector2i = Vector2i(1, 1)
 
+var spells: Array[Spell]
+
+var _tile_map_position: Vector2i = SquareTileMap.TILE_NOT_FOUND
+var tile_map_position: Vector2i:
+	get:
+		return _tile_map_position
+	set(value):
+		tile_map.set_occupied(_tile_map_position, false)
+		tile_map.set_occupied(value, true)
+		_tile_map_position = value
+
+@export var team: int = 0
 var _move_queue: Array[Vector2i] = []
 
 @export var tile_map: SquareTileMap
@@ -20,6 +34,15 @@ var _move_queue: Array[Vector2i] = []
 func _init():
 	start_position = position
 	target_position = position
+
+func _ready() -> void:
+	tile_map_position = tile_map.get_node_from_global(global_position)
+	var fire_bolt_spell: FireBoltSpell = FIRE_BOLT_SPELL.instantiate()
+	add_spell(fire_bolt_spell)
+	
+func add_spell(spell: Spell) -> void:
+	spells.append(spell)
+	spell_added.emit(spell)
 
 func _move(direction: Direction) -> void:
 	if !can_move:

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dim7lrk4g2l5f"]
 
-[ext_resource type="Script" path="res://scenes/projectiles/projectile_base.gd" id="1_yhed1"]
+[ext_resource type="Script" path="res://spells/fire_bolt/projectile/fire_bolt_projectile.gd" id="1_tr73c"]
 [ext_resource type="Texture2D" uid="uid://tk1kl27j2t2e" path="res://spells/fire_bolt/projectile/fire_bolt_projectile.png" id="2_iphq6"]
 [ext_resource type="PackedScene" uid="uid://dog7f5a3hif8g" path="res://scenes/projectiles/move_behaviors/linear_projectile_move_behavior.tscn" id="3_w1bxg"]
 
@@ -17,7 +17,7 @@ radius = 9.0
 
 [node name="FireBoltProjectile" type="Node2D" node_paths=PackedStringArray("move_behavior")]
 top_level = true
-script = ExtResource("1_yhed1")
+script = ExtResource("1_tr73c")
 move_behavior = NodePath("LinearProjectileMoveBehavior")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -44,3 +44,5 @@ color_ramp = SubResource("Gradient_1jis7")
 shape = SubResource("CircleShape2D_el5in")
 
 [node name="LinearProjectileMoveBehavior" parent="." instance=ExtResource("3_w1bxg")]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

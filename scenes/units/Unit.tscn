@@ -19,7 +19,7 @@ func set_color(color: Color) -> void:
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yuaro"]
-size = Vector2(64, 64)
+size = Vector2(42, 42)
 
 [node name="Unit" type="CharacterBody2D"]
 script = ExtResource("1_1qy1j")
@@ -32,7 +32,7 @@ texture = ExtResource("2_d2nom")
 script = SubResource("GDScript_n4hti")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("RectangleShape2D_yuaro")
+debug_color = Color(0, 0.629822, 0.478757, 0.42)
 
 [connection signal="move_step_completed" from="." to="." method="_on_move_step_completed"]

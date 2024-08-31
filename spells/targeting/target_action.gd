@@ -1,6 +1,8 @@
-class_name TargetAction extends Node
+class_name TargetAction extends Node2D
 
-signal target_selected(target: Target)
+signal target_selected(source: Unit, target: Target)
 
-func start_target_selection() -> void:
+var _caster: Unit
+
+func start_target_selection(caster: Unit) -> void:
 	pass

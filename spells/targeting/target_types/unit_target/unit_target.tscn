@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bel1dwkk6vccf"]
+
+[ext_resource type="Script" path="res://spells/targeting/target_types/unit_target/unit_target.gd" id="1_1k5r2"]
+
+[node name="UnitTarget" type="Node"]
+script = ExtResource("1_1k5r2")

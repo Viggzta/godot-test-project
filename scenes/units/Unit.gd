@@ -26,22 +26,47 @@ var tile_map_position: Vector2i:
 		tile_map.set_occupied(value, true)
 		_tile_map_position = value
 
-@export var team: int = 0
+var _team: int = 0
+@export var team: int:
+	get:
+		return _team
+	set(value):
+		_team = value
+		_set_team_color()
+
 var _move_queue: Array[Vector2i] = []
 
 @export var tile_map: SquareTileMap
+
+var unit_sprite: Sprite2D
+
+func _set_team_color() -> void:
+	if unit_sprite == null:
+		return
+
+	if Globals.team_colors.has(_team):
+		var color: Color = Globals.team_colors[_team]
+		print("Setting team color ", color)
+		unit_sprite.material.set("shader_parameter/outline_color", Vector3(color.r, color.g, color.b))
+	else:
+		unit_sprite.material.set("shader_parameter/outline_color", Vector3(0, 0, 0))
 
 func _init():
 	start_position = position
 	target_position = position
 
 func _ready() -> void:
+	Globals.units.append(self)
 	tile_map_position = tile_map.get_node_from_global(global_position)
 	var fire_bolt_spell: FireBoltSpell = FIRE_BOLT_SPELL.instantiate()
 	add_spell(fire_bolt_spell)
+	unit_sprite = $Sprite2D
+	_set_team_color()
 	
 func add_spell(spell: Spell) -> void:
+	spell.set_caster(self)
 	spells.append(spell)
+	add_child(spell)
 	spell_added.emit(spell)
 
 func _move(direction: Direction) -> void:

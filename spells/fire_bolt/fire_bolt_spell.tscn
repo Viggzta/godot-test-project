@@ -3,17 +3,17 @@
 [ext_resource type="Script" path="res://spells/fire_bolt/fire_bolt_spell.gd" id="1_hs7s2"]
 [ext_resource type="Resource" uid="uid://mkropfuus3ng" path="res://spells/fire_bolt/fire_bolt_spell_icon.tres" id="2_4upyj"]
 [ext_resource type="PackedScene" uid="uid://ckf5cpu3ty7q5" path="res://spells/fire_bolt/fire_bolt_spell_effect.tscn" id="2_mks24"]
-[ext_resource type="Script" path="res://spells/targeting/target_types/no_target/no_target_action.gd" id="3_c6iw8"]
+[ext_resource type="PackedScene" uid="uid://sfnr87ik15v8" path="res://spells/targeting/target_types/unit_target/unit_target_action.tscn" id="3_leihb"]
 
 [node name="FireBoltSpell" type="Node2D" node_paths=PackedStringArray("target_action", "action_effect")]
 script = ExtResource("1_hs7s2")
 spell_icon = ExtResource("2_4upyj")
-target_action = NodePath("NoTargetAction")
+target_action = NodePath("UnitTargetAction")
 action_effect = NodePath("FireBoltSpellEffect")
 
-[node name="NoTargetAction" type="Node2D" parent="."]
-script = ExtResource("3_c6iw8")
+[node name="UnitTargetAction" parent="." instance=ExtResource("3_leihb")]
+target_enemy_units = true
 
 [node name="FireBoltSpellEffect" parent="." instance=ExtResource("2_mks24")]
 
-[connection signal="target_selected" from="NoTargetAction" to="FireBoltSpellEffect" method="_start_effect"]
+[connection signal="target_selected" from="UnitTargetAction" to="FireBoltSpellEffect" method="start_effect"]

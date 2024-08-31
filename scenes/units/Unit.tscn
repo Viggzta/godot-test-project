@@ -1,28 +1,38 @@
 [gd_scene load_steps=6 format=3 uid="uid://dthlx7wx7w8ln"]
 
 [ext_resource type="Script" path="res://scenes/units/Unit.gd" id="1_1qy1j"]
-[ext_resource type="Texture2D" uid="uid://bmso6vmjal5st" path="res://art/monochrome.png" id="2_au7ig"]
-[ext_resource type="PackedScene" uid="uid://b2jp0p3khqm2v" path="res://scenes/camera/camera_follow_point.tscn" id="3_rmkjo"]
+[ext_resource type="Material" uid="uid://ds5npo6ke71nd" path="res://art/outline_shader_material.tres" id="1_a151k"]
+[ext_resource type="Texture2D" uid="uid://hhotdhuuw4uh" path="res://scenes/units/human.png" id="2_d2nom"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qujra"]
-atlas = ExtResource("2_au7ig")
-region = Rect2(425, 0, 16, 16)
+[sub_resource type="GDScript" id="GDScript_n4hti"]
+script/source = "class_name UnitSprite extends Sprite2D
+
+var _color: Color = Color.BLACK
+
+func _ready() -> void:
+	set_color(_color)
+
+func set_color(color: Color) -> void:
+	_color = color
+	if is_node_ready():
+		material.set(\"shader_parameter/outline_color\", Vector3(color.r, color.g, color.b))
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yuaro"]
 size = Vector2(64, 64)
 
 [node name="Unit" type="CharacterBody2D"]
 script = ExtResource("1_1qy1j")
-team = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
+material = ExtResource("1_a151k")
 scale = Vector2(4, 4)
-texture = SubResource("AtlasTexture_qujra")
+texture = ExtResource("2_d2nom")
+script = SubResource("GDScript_n4hti")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_yuaro")
-
-[node name="CameraFollowPoint" parent="." instance=ExtResource("3_rmkjo")]
 
 [connection signal="move_step_completed" from="." to="." method="_on_move_step_completed"]

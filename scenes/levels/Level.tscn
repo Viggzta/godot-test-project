@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://swn813u45cdy"]
+[gd_scene load_steps=8 format=4 uid="uid://swn813u45cdy"]
 
 [ext_resource type="PackedScene" uid="uid://chxjishhtufkk" path="res://scenes/camera/follow_camera.tscn" id="1_jeqrp"]
 [ext_resource type="PackedScene" uid="uid://dthlx7wx7w8ln" path="res://scenes/units/Unit.tscn" id="1_og21r"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dup2f3act2wwk" path="res://scenes/tile_map/square_tile_map.tscn" id="2_yh51n"]
 [ext_resource type="PackedScene" uid="uid://bgluj56w2turw" path="res://scenes/units/player_controller.tscn" id="5_f6hlq"]
 [ext_resource type="PackedScene" uid="uid://bu55dt3ty7aue" path="res://scenes/ui/spell_icons/action_bar.tscn" id="6_pta77"]
+[ext_resource type="PackedScene" uid="uid://b2jp0p3khqm2v" path="res://scenes/camera/camera_follow_point.tscn" id="7_fjg0p"]
 
 [node name="Level" type="Node2D"]
 
@@ -35,12 +36,13 @@ tile_set = ExtResource("1_xlh73")
 
 [node name="Unit" parent="." node_paths=PackedStringArray("tile_map") instance=ExtResource("1_og21r")]
 position = Vector2(544, 992)
-team = null
 tile_map = NodePath("../TileMap")
 
 [node name="PlayerController" parent="Unit" node_paths=PackedStringArray("unit", "tile_map") instance=ExtResource("5_f6hlq")]
 unit = NodePath("..")
 tile_map = NodePath("../../TileMap")
+
+[node name="CameraFollowPoint" parent="Unit" instance=ExtResource("7_fjg0p")]
 
 [node name="Unit2" parent="." node_paths=PackedStringArray("tile_map") instance=ExtResource("1_og21r")]
 position = Vector2(544, 672)

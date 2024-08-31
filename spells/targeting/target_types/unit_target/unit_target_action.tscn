@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://sfnr87ik15v8"]
+
+[ext_resource type="Script" path="res://spells/targeting/target_types/unit_target/unit_target_action.gd" id="1_iqb1o"]
+
+[node name="UnitTargetAction" type="Node2D"]
+script = ExtResource("1_iqb1o")

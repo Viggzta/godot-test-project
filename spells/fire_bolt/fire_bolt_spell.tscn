@@ -13,6 +13,7 @@ action_effect = NodePath("FireBoltSpellEffect")
 
 [node name="UnitTargetAction" parent="." instance=ExtResource("3_leihb")]
 target_enemy_units = true
+range = 512
 
 [node name="FireBoltSpellEffect" parent="." instance=ExtResource("2_mks24")]
 

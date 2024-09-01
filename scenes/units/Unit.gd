@@ -1,11 +1,18 @@
 class_name Unit extends Node2D
 
+const FIRE_BOLT_SPELL = preload("res://spells/fire_bolt/fire_bolt_spell.tscn")
+const Direction = preload("res://scripts/enums.gd").Direction
+
 signal move_step_completed()
 signal spell_added(spell: Spell)
 signal spell_removed(spell: Spell)
 
-const FIRE_BOLT_SPELL = preload("res://spells/fire_bolt/fire_bolt_spell.tscn")
-const Direction = preload("res://scripts/enums.gd").Direction
+var _health: int
+@export var health: int:
+	get:
+		return _health
+	set(value):
+		_health = value
 
 var speed: float = 32.0
 var can_move: bool = true
@@ -60,6 +67,8 @@ func _ready() -> void:
 	tile_map_position = tile_map.get_node_from_global(global_position)
 	var fire_bolt_spell: FireBoltSpell = FIRE_BOLT_SPELL.instantiate()
 	add_spell(fire_bolt_spell)
+	var fire_bolt_spell2: FireBoltSpell = FIRE_BOLT_SPELL.instantiate()
+	add_spell(fire_bolt_spell2)
 	unit_sprite = $Sprite2D
 	_set_team_color()
 	

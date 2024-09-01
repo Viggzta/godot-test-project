@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://cb542bey6islm"]
+[gd_scene load_steps=6 format=3 uid="uid://cb542bey6islm"]
 
 [ext_resource type="Texture2D" uid="uid://cfwk84kb3jj" path="res://art/spell_icons/arcane_missiles.png" id="1_m8gwq"]
 [ext_resource type="Script" path="res://scenes/ui/spell_icons/action_button.gd" id="1_u8116"]
 [ext_resource type="Theme" uid="uid://dipkwtrhw3apn" path="res://themes/action_button_theme.tres" id="2_le0fj"]
+[ext_resource type="FontFile" uid="uid://bwi0f8cklu4g" path="res://fonts/Darker_Grotesque/static/DarkerGrotesque-Bold.ttf" id="4_mk4lk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sclhr"]
+font = ExtResource("4_mk4lk")
 
 [node name="ActionButton" type="Control"]
 custom_minimum_size = Vector2(64, 64)
@@ -19,6 +23,31 @@ offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u8116")
+
+[node name="Control" type="Control" parent="."]
+z_index = 1
+layout_mode = 2
+anchors_preset = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 60.0
+offset_bottom = 60.0
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 1
+offset_left = -8.0
+offset_top = -9.0
+offset_right = 9.0
+offset_bottom = 8.0
+theme = ExtResource("2_le0fj")
+
+[node name="KeybindLabel" type="Label" parent="Control/PanelContainer"]
+layout_mode = 2
+theme = ExtResource("2_le0fj")
+text = "_"
+label_settings = SubResource("LabelSettings_sclhr")
+horizontal_alignment = 1
+uppercase = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

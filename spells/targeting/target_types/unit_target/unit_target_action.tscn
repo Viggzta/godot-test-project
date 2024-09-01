@@ -4,3 +4,9 @@
 
 [node name="UnitTargetAction" type="Node2D"]
 script = ExtResource("1_iqb1o")
+
+[node name="TargetIndicator" type="Line2D" parent="."]
+visible = false
+top_level = true
+points = PackedVector2Array(0, 0, 83.35, 0)
+default_color = Color(0, 1, 0, 0.196078)

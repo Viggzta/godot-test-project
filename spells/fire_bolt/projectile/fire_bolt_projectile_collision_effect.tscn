@@ -1,13 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://dg5ar3rw8p521"]
+[gd_scene load_steps=5 format=3 uid="uid://dg5ar3rw8p521"]
 
 [ext_resource type="Script" path="res://spells/fire_bolt/projectile/fire_bolt_projectile_collision_effect.gd" id="1_dsov7"]
 
+[sub_resource type="Curve" id="Curve_n4hq8"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, 200), 0.0, 0.0, 0, 0, Vector2(1, -200), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="Curve" id="Curve_hjcot"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.076923), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_ec8ev"]
-offsets = PackedFloat32Array(0.02, 1)
+offsets = PackedFloat32Array(0, 0.74)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [node name="FireBoltProjectileCollisionEffect" type="Node2D"]
@@ -16,20 +22,43 @@ script = ExtResource("1_dsov7")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 emitting = false
-amount = 32
-lifetime = 0.5
+amount = 64
+lifetime = 0.25
 one_shot = true
-explosiveness = 1.0
-emission_shape = 3
-emission_rect_extents = Vector2(1, 8)
-spread = 10.0
+explosiveness = 0.9
+emission_shape = 1
+emission_sphere_radius = 10.0
+spread = 180.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 400.0
 initial_velocity_max = 500.0
+linear_accel_min = -50.0
+linear_accel_curve = SubResource("Curve_n4hq8")
 scale_amount_min = 6.0
 scale_amount_max = 8.0
 scale_amount_curve = SubResource("Curve_hjcot")
-color = Color(1, 0, 0, 1)
+color = Color(0.552956, 0.552956, 0.552956, 1)
+color_ramp = SubResource("Gradient_ec8ev")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 32
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.82
+emission_shape = 3
+emission_rect_extents = Vector2(1, 4)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 550.0
+initial_velocity_max = 600.0
+linear_accel_min = -50.0
+linear_accel_curve = SubResource("Curve_n4hq8")
+scale_amount_min = 6.0
+scale_amount_max = 8.0
+scale_amount_curve = SubResource("Curve_hjcot")
+color = Color(0.787542, 4.16331e-06, 5.77569e-07, 1)
 color_ramp = SubResource("Gradient_ec8ev")
 
 [connection signal="finished" from="CPUParticles2D" to="." method="_on_cpu_particles_2d_finished"]
+[connection signal="finished" from="CPUParticles2D2" to="." method="_on_cpu_particles_2d_2_finished"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/units/Unit.gd" id="1_1qy1j"]
 [ext_resource type="Material" uid="uid://ds5npo6ke71nd" path="res://art/outline_shader_material.tres" id="1_a151k"]
-[ext_resource type="Texture2D" uid="uid://hhotdhuuw4uh" path="res://scenes/units/human.png" id="2_d2nom"]
+[ext_resource type="Texture2D" uid="uid://cl2acypicp1oy" path="res://art/characters/1.png" id="3_y45w5"]
 
 [sub_resource type="GDScript" id="GDScript_n4hti"]
 script/source = "class_name UnitSprite extends Sprite2D
@@ -27,8 +27,8 @@ script = ExtResource("1_1qy1j")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 material = ExtResource("1_a151k")
-scale = Vector2(4, 4)
-texture = ExtResource("2_d2nom")
+scale = Vector2(2, 2)
+texture = ExtResource("3_y45w5")
 script = SubResource("GDScript_n4hti")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

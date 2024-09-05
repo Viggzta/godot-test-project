@@ -14,6 +14,20 @@ var _health: int
 	set(value):
 		_health = value
 
+var _team: int = 0
+@export var team: int:
+	get:
+		return _team
+	set(value):
+		_team = value
+		_set_team_color()
+
+@export var texture: Texture2D:
+	get:
+		return $Sprite2D.texture
+	set(value):
+		$Sprite2D.texture = value
+
 var speed: float = 32.0
 var can_move: bool = true
 var start_position: Vector2 = Vector2.ZERO
@@ -32,14 +46,6 @@ var tile_map_position: Vector2i:
 		tile_map.set_occupied(_tile_map_position, false)
 		tile_map.set_occupied(value, true)
 		_tile_map_position = value
-
-var _team: int = 0
-@export var team: int:
-	get:
-		return _team
-	set(value):
-		_team = value
-		_set_team_color()
 
 var _move_queue: Array[Vector2i] = []
 

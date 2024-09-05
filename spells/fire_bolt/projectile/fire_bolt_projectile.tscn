@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://dog7f5a3hif8g" path="res://scenes/projectiles/move_behaviors/linear_projectile_move_behavior.tscn" id="3_w1bxg"]
 
 [sub_resource type="Curve" id="Curve_n7pvr"]
-max_value = 16.0
-_data = [Vector2(0, 16), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
+max_value = 24.0
+_data = [Vector2(0, 16), 0.0, 0.0, 0, 0, Vector2(0.230337, 20.044), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_1jis7"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)

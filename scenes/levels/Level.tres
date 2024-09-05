@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cx8hg5hiubr8k"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://cx8hg5hiubr8k"]
 
 [ext_resource type="Texture2D" uid="uid://bmso6vmjal5st" path="res://art/monochrome.png" id="1_ij1ho"]
+[ext_resource type="PackedScene" uid="uid://dthlx7wx7w8ln" path="res://scenes/units/Unit.tscn" id="2_2geg0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aeyvu"]
 texture = ExtResource("1_ij1ho")
@@ -585,6 +586,9 @@ separation = Vector2i(1, 1)
 23:3/0 = 0
 23:4/0 = 0
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_amwnb"]
+scenes/1/scene = ExtResource("2_2geg0")
+
 [resource]
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Walls"
@@ -592,3 +596,4 @@ terrain_set_0/terrain_0/color = Color(0.48, 0.48, 0.48, 1)
 terrain_set_0/terrain_1/name = "Floor"
 terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_aeyvu")
+sources/1 = SubResource("TileSetScenesCollectionSource_amwnb")

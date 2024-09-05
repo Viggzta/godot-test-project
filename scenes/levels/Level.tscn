@@ -1,12 +1,14 @@
-[gd_scene load_steps=8 format=4 uid="uid://swn813u45cdy"]
+[gd_scene load_steps=10 format=4 uid="uid://swn813u45cdy"]
 
 [ext_resource type="PackedScene" uid="uid://chxjishhtufkk" path="res://scenes/camera/follow_camera.tscn" id="1_jeqrp"]
 [ext_resource type="PackedScene" uid="uid://dthlx7wx7w8ln" path="res://scenes/units/Unit.tscn" id="1_og21r"]
 [ext_resource type="TileSet" uid="uid://cx8hg5hiubr8k" path="res://scenes/levels/Level.tres" id="1_xlh73"]
 [ext_resource type="PackedScene" uid="uid://dup2f3act2wwk" path="res://scenes/tile_map/square_tile_map.tscn" id="2_yh51n"]
 [ext_resource type="PackedScene" uid="uid://bgluj56w2turw" path="res://scenes/units/player_controller.tscn" id="5_f6hlq"]
+[ext_resource type="Texture2D" uid="uid://dxeggyjxtvss5" path="res://art/characters/16.png" id="6_g0f30"]
 [ext_resource type="PackedScene" uid="uid://bu55dt3ty7aue" path="res://scenes/ui/spell_icons/action_bar.tscn" id="6_pta77"]
 [ext_resource type="PackedScene" uid="uid://b2jp0p3khqm2v" path="res://scenes/camera/camera_follow_point.tscn" id="7_fjg0p"]
+[ext_resource type="Texture2D" uid="uid://dj5mgmsr7yswq" path="res://art/enemies/1.png" id="9_sx8uk"]
 
 [node name="Level" type="Node2D"]
 
@@ -36,6 +38,7 @@ tile_set = ExtResource("1_xlh73")
 
 [node name="Unit" parent="." node_paths=PackedStringArray("tile_map") instance=ExtResource("1_og21r")]
 position = Vector2(544, 992)
+texture = ExtResource("6_g0f30")
 tile_map = NodePath("../TileMap")
 
 [node name="PlayerController" parent="Unit" node_paths=PackedStringArray("unit", "tile_map") instance=ExtResource("5_f6hlq")]
@@ -47,4 +50,5 @@ tile_map = NodePath("../../TileMap")
 [node name="Unit2" parent="." node_paths=PackedStringArray("tile_map") instance=ExtResource("1_og21r")]
 position = Vector2(544, 672)
 team = 1
+texture = ExtResource("9_sx8uk")
 tile_map = NodePath("../TileMap")
